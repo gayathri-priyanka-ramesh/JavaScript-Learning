@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="getElementByIDExample1" cls="cls">Get Element by ID - Statement 1</p>
+    <p id="getElementByIDExample1">Get Element by ID - Statement 2</p>
+
+    <input type="text" name="language" value="html" />
+    <input type="text" name="language" value="css" />
+    <input type="text" name="language" value="javascript" />
+
+    <h6>Get Elements by Tag Name - Statement 1</h6>
+    <h6>Get Elements by Tag Name - Statement 2</h6>
+    <h6>Get Elements by Tag Name - Statement 3</h6>
+
+    <p class="getElementsByClassNameExample" id="id1">
+      Get Element by Class Name - Statement 1
+    </p>
+    <div id="exampleContainer">
+      <p class="getElementsByClassNameExample" id="id2">
+        Get Element by Class Name - Statement 2
+      </p>
+      <p class="getElementsByClassNameExample">
+        Get Element by Class Name - Statement 3
+      </p>
+    </div>
+
+    <script>
+      console.log("Get Element By ID ");
+      // returns the fisrt element with the passed 'id' in the form of HTML tag
+      let idExample1 = document.getElementById("getElementByIDExample1");
+      console.log("idExample1  ---> ", idExample1);
+      // retuns null if no element present
+      let idExample2 = document.getElementById("getElementByIDExample2");
+      console.log("idExample2  ---> ", idExample2);
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      console.log("Get Elements By Name ");
+      // retuns the list of nodes with passed name in the form of 'NodeList(count)'
+      let nameExample = document.getElementsByName("language");
+      console.log("nameExample  ---> ", nameExample);
+      console.log("nameExample length  ---> ", nameExample.length);
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      console.log("Get Elements by Tag Name ");
+      // returns collection of elements with passed 'Tag Name' in the form of 'HTMLCollection(count)'
+      let tagNameExample = document.getElementsByTagName("h6");
+      console.log("tagNameExample  ---> ", tagNameExample);
+      console.log("tagNameExample length  ---> ", tagNameExample.length);
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      console.log("Get Elements By Class Name ");
+      // returns collection of elements with passed 'Class Name' in the form of 'HTMLCollection(count)'
+      // Document Level
+      let classNameExample1 = document.getElementsByClassName(
+        "getElementsByClassNameExample"
+      );
+      console.log(
+        "classNameExample1 - Document Level  --->",
+        classNameExample1
+      );
+      // Element Level
+      let exampleContainer = document.getElementById("exampleContainer");
+      console.log("exampleContainer element  ---> ", exampleContainer);
+      let classNameExample2 = exampleContainer.getElementsByClassName(
+        "getElementsByClassNameExample"
+      );
+      console.log("classNameExample2 - Element Level  --->", classNameExample2);
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      console.log("Query Selector ");
+      // returns the first element with the passed CSS Selector in the form of HTML tag
+      let querySelectorIDExample = document.querySelector(
+        "#getElementByIDExample1"
+      );
+      console.log("querySelectorIDExample  ---> ", querySelectorIDExample);
+
+      let querySelectorTagNameExample1 = document.querySelector("h6");
+      console.log(
+        "querySelectorTagNameExample1  ---> ",
+        querySelectorTagNameExample1
+      );
+      let querySelectorTagNameExample2 = document.querySelector("h6, p");
+      console.log(
+        "querySelectorTagNameExample2  ---> ",
+        querySelectorTagNameExample2
+      );
+
+      let querySelectorClassExample1 = document.querySelector(
+        ".getElementsByClassNameExample"
+      );
+      console.log(
+        "querySelectorClassExample1 - Document Level  --->",
+        querySelectorClassExample1
+      );
+      let querySelectorClassExample2 = exampleContainer.querySelector(
+        ".getElementsByClassNameExample"
+      );
+      console.log(
+        "querySelectorClassExample1 - Element Level  --->",
+        querySelectorClassExample2
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+    
+      console.log("Query Selector All ");
+      // retuns the list of nodes with passed CSS Selector in the form of 'NodeList(count)'
+      let querySelectorAllIDExample = document.querySelectorAll(
+        "#getElementByIDExample1"
+      );
+      console.log(
+        "querySelectorAllIDExample  ---> ",
+        querySelectorAllIDExample
+      );
+
+      let querySelectorAllTagNameExample1 = document.querySelectorAll("h6");
+      console.log(
+        "querySelectorAllTagNameExample1  ---> ",
+        querySelectorAllTagNameExample1
+      );
+      let querySelectorAllTagNameExample2 = document.querySelectorAll("p, h6");
+      console.log(
+        "querySelectorAllTagNameExample2  ---> ",
+        querySelectorAllTagNameExample2
+      );
+      console.log(
+        "querySelectorAllTagNameExample2 length  ---> ",
+        querySelectorAllTagNameExample2.length
+      );
+
+      let querySelectorAllClassExample1 = document.querySelectorAll(
+        ".getElementsByClassNameExample"
+      );
+      console.log(
+        "querySelectorAllClassExample1  ---> ",
+        querySelectorAllClassExample1
+      );
+      let querySelectorAllClassExample2 = exampleContainer.querySelectorAll(
+        ".getElementsByClassNameExample"
+      );
+      console.log(
+        "querySelectorAllClassExample2  ---> ",
+        querySelectorAllClassExample2
+      );
+    </script>
+  </body>
+</html>

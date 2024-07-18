@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .newClassName4 {
+        color: crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="classPropertyExample" class="className1 className2">
+      Class Name Property
+    </h1>
+
+    <script>
+      let classPropertyExampleElement = document.getElementById(
+        "classPropertyExample"
+      );
+
+      // 'className' Property
+      console.log(
+        "Class Names of classPropertyExampleElement  ---> ",
+        classPropertyExampleElement.className
+      );
+
+      // Overrides existing classes
+      classPropertyExampleElement.className = "newClassName1";
+      console.log(
+        "Class Names of classPropertyExampleElement after overriding  ---> ",
+        classPropertyExampleElement.className
+      );
+
+      // Concatenates with existing class name
+      classPropertyExampleElement.className += "newClassName2";
+      console.log(
+        "Class Names of classPropertyExampleElement after concatenating  ---> ",
+        classPropertyExampleElement.className
+      );
+
+      // Add a 'space' for it to be added as a new class name
+      classPropertyExampleElement.className += " newClassName3";
+      console.log(
+        "Class Names of classPropertyExampleElement after adding new class  ---> ",
+        classPropertyExampleElement.className
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      // 'classList' Property
+      // Returns collection of classes available in the accessed element in the form of 'DOMTokenList(length)'
+      console.log(
+        "Collection of classes available  ---> ",
+        classPropertyExampleElement.classList
+      );
+
+      // Adds the passed class names
+      // Does nothing if the class already exists
+      classPropertyExampleElement.classList.add(
+        "newClassName4",
+        "newClassName5",
+        "newClassName6",
+        "newClassName7",
+        "newClassName8",
+        "newClassName3"
+      );
+      console.log(
+        "Collection of classes available after adding new classes  ---> ",
+        classPropertyExampleElement.classList
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      // Removes the passed class names
+      // Does nothing if the class name doesn't exist
+      classPropertyExampleElement.classList.remove(
+        "newClassName5",
+        "newClassName6",
+        "newClassName2"
+      );
+      console.log(
+        "Collection of classes available after removing classes  ---> ",
+        classPropertyExampleElement.classList
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      // Replace existing class name with new class name
+      classPropertyExampleElement.classList.replace(
+        "newClassName7",
+        "replacedClassName7"
+      );
+      console.log(
+        "Collection of classes available after replacing a class  ---> ",
+        classPropertyExampleElement.classList
+      );
+      // Does nothing is the class name doesn't exist
+      classPropertyExampleElement.classList.replace(
+        "newClassName9",
+        "replacedClassName9"
+      );
+      console.log(
+        "Collection of classes available after replacing a class  ---> ",
+        classPropertyExampleElement.classList
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      // Checks availability of class name
+      console.log(
+        "Is 'newClassName7' contained  ---> ",
+        classPropertyExampleElement.classList.contains("newClassName7")
+      );
+      console.log(
+        "Is 'replacedClassName7' contained  ---> ",
+        classPropertyExampleElement.classList.contains("replacedClassName7")
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      // Removes if the class name is available
+      classPropertyExampleElement.classList.toggle("newClassName8");
+      console.log(
+        "Collection of classes available after toggling an existing class  ---> ",
+        classPropertyExampleElement.classList
+      );
+      // Adds if the class name is not available
+      classPropertyExampleElement.classList.toggle("newClassName9");
+      console.log(
+        "Collection of classes available after toggling a non-existing class  ---> ",
+        classPropertyExampleElement.classList
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log("Document Body  ---> ", document.body);
+    </script>
+  </body>
+</html>

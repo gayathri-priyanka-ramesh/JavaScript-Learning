@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        min-height: 40px;
+      }
+      h6 {
+        margin-bottom: 5px;
+      }
+      .jsondata {
+        border: 1px solid;
+        margin: 10px;
+        background-color: papayawhip;
+      }
+    </style>
+
+    <!-- Ways to include JS in HTML
+            Inline JS   -> Event Handling
+            Internal JS -> <script>...</script>
+            External JS -> <script src="fileName.js"></script> 
+
+         Places to include JS in HTML
+            Inside Head Tag     -> svz
+            Just above '/body'  -> btdfdc
+
+         Steps involved in loading of WebPage
+            HTML Parsing
+            Loading of Scripts
+                Fetching Script from Network
+                Executing Script line by line
+
+         Boolean Attributes inside 'script' tags
+            async -> Loading external scripts (analytics chart) independent of webpage code
+                     Cannot be used for dependent scripts of webpage code as it may break the flow
+                     Doesn't guarantee the order of execution of scripts
+            defer -> Loading dependent scripts (maintains the order of execution of scripts)
+    -->
+    <script>
+      let divCntHead = document.getElementsByTagName("div").length;
+      document.write("Div Count from Head  ---> ", divCntHead);
+    </script>
+
+    <!-- Fetches the script file and executes only after the whole document is loaded -->
+    <script src="0. script.js" defer></script>
+  </head>
+
+  <body>
+    <br />
+    <script>
+      let divCntBodyStart = document.getElementsByTagName("div").length;
+      document.write("Div Count from BodyStart  ---> ", divCntBodyStart);
+    </script>
+    <br />
+    <p id="divCnt"></p>
+    <!-- <script>
+        alert("Hello World");
+    </script> -->
+    <hr />
+
+    <h1>Hello World</h1>
+    <h2>Loading of WebPage</h2>
+    <img
+      src="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript/async-defer.jpg"
+      alt=""
+      width="95%"
+    />
+    <hr />
+
+    <h2 id="welcomeMsg">Welcome</h2>
+    <button id="setUserButton">Set User</button>
+    <button id="clearUserButton">Clear User</button>
+    <hr />
+
+    <h3>Closures with Event Listeners</h3>
+    <button id="btnA">Button A</button>
+    <button id="btnB">Button B</button>
+    <hr />
+
+    <h3>'this' in DOM</h3>
+    <button onclick="alert(this)">Click Me to Alert my 'this' value</button>
+    <button onclick="alert(this.tagName)">Click Me to Alert my tagName</button>
+    <button id="thisDOM">value of 'this' on 'click' event</button>
+    <hr />
+
+    <h6>Data Rendered From '.txt' File</h6>
+    <div
+      class="dataReadFromTextFile"
+      style="background-color: palegoldenrod"
+    ></div>
+    <div
+      class="dataReadFromTextFileOk"
+      style="background-color: paleturquoise"
+    ></div>
+
+    <h6>Data Rendered From '.json' File</h6>
+    <div
+      class="dataReadFromJSONFile"
+      style="background-color: lightcoral"
+    ></div>
+
+    <h6>
+      Data Rendered From 'https://jsonplaceholder.typicode.com/todos/' External
+      API
+    </h6>
+    <button class="btn1">Click to View 1 Json from External API</button>
+    <div class="userId" style="background-color: palegreen"></div>
+    <div class="id" style="background-color: lavender"></div>
+    <div class="title" style="background-color: lightpink"></div>
+    <div class="completed" style="background-color: peachpuff"></div>
+
+    <button class="btnAll">Click to View All Json from External API</button>
+    <div class="dataReadFromExternalAPI" style="background-color: #ccc"></div>
+    <hr />
+
+    <p id="redPara" style="color: red"></p>
+    <p id="bluePara" style="color: blue"></p>
+    <hr />
+
+    <h3>Debounce & Throttle</h3>
+    <input type="text" onkeyup="fetchData(0)" placeholder="Conventional" />
+    <button id="conventionalButton">Conventional</button>
+    <button id="withoutDebounceButton">Without Debounce</button>
+    <br />
+    <input type="text" onkeyup="fetchDataDebounce()" placeholder="Debounce" />
+    <button id="debounceButton">Debounce</button><br />
+    <input
+      type="text"
+      onkeyup="fetchDataThrottle(this)"
+      placeholder="Throttle"
+    />
+    <button id="throttleButton">Throttle</button><br />
+    <hr />
+
+    <!-- <script src="1. variables.js"></script> -->
+    <!-- <script src="2. datatypes.js"></script> -->
+    <!-- <script src="3. operators.js"></script> -->
+    <!-- <script src="4. conditionals.js"></script> -->
+    <!-- <script src="5. loops.js"></script> -->
+    <!-- <script src="6. mathfunctions.js"></script> -->
+    <!-- <script src="7. stringmethods.js"></script> -->
+    <!-- <script src="8. arrays.js"></script> -->
+    <!-- <script src="9. arrayMethods.js"></script> -->
+    <!-- <script src="10. objects.js"></script> -->
+    <!-- <script src="11. functionDeclaration.js"></script> -->
+    <!-- <script src="12. functionExpression.js"></script> -->
+    <!-- <script src="13. functionCallBackClosure.js"></script> -->
+    <!-- <script src="14. functionArrow.js"></script> -->
+    <!-- <script src="15. scope.js"></script> -->
+    <!-- <script src="16. methods.js"></script> -->
+    <!-- <script src="17. json.js"></script> -->
+    <!-- <script src="18. dateTime.js"></script> -->
+    <!-- <script src="19. timers.js"></script> -->
+    <!-- <script src="20. es6.js"></script> -->
+    <!-- <script src="21. spreadRest.js"></script> -->
+    <!-- <script src="22. destructuring.js"></script> -->
+    <!-- <script src="23. map.js"></script> -->
+    <!-- <script src="24. set.js"></script> -->
+    <!-- <script src="25. oopsThis.js"></script> -->
+    <!-- <script src="26. oopsFunctionMethods.js"></script> -->
+    <!-- <script src="27. oopsPrototypalInheritance.js"></script> -->
+    <!-- <script src="28. oopsClasses.js"></script> -->
+    <!-- <script src="29. oopsModifiers.js"></script> -->
+    <!-- <script src="30. oopsPillars.js"></script> -->
+    <!-- <script src="31. asynchronous.js"></script> -->
+    <!-- <script src="32. renderData.js"></script> -->
+    <!-- <script src="33. errorHandling.js"></script> -->
+    <!-- <script src="34. recursion.js"></script> -->
+    <!-- <script src="35. curryFunctions.js"></script> -->
+    <!-- <script src="36. shallowDeepCopy.js"></script> -->
+    <!-- <script src="37. pureHigherOrderFunctions.js"></script> -->
+    <!-- <script src="38. iife.js"></script> -->
+    <!-- <script src="39. composition.js"></script> -->
+    <!-- <script src="40. composePipe.js"></script> -->
+    <!-- <script src="41. hoisting.js"></script> -->
+    <!-- <script src="42. promise.js"></script> -->
+    <!-- <script src="43. debounceThrottle.js"></script> -->
+    <!-- <script src="44. memoization.js"></script> -->
+    <!-- <script src="45. utilityFunction.js"></script> -->
+
+    <script>
+      let divCntEnd = document.getElementsByTagName("div").length;
+      document.write("Div Count from End  ---> ", divCntEnd);
+    </script>
+  </body>
+</html>

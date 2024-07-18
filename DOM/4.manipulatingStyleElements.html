@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #internalId {
+        background-color: palegreen;
+        font-size: 20px;
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="inlineId"
+      placeholder="inlinePlaceholder"
+      style="background-color: black; font-size: 20px"
+    />
+    <input type="text" id="internalId" placeholder="internalPlaceholder" />
+
+    <script>
+      let inputBoxInline = document.getElementById("inlineId");
+      // Inline CSS Styles
+      console.log("Style of inputBoxInline  ---> ", inputBoxInline.style);
+      console.log(
+        "BackgroundColor Style of inputBoxInline  ---> ",
+        inputBoxInline.style.backgroundColor
+      );
+      console.log(
+        "FontSize Style of inputBoxInline  ---> ",
+        inputBoxInline.style.fontSize
+      );
+      inputBoxInline.style.padding = "10px";
+      console.log("inputBoxInline  ---> ", inputBoxInline);
+      console.log("Style of inputBoxInline  ---> ", inputBoxInline.style);
+      console.log(
+        "Padding Style of inputBoxInline  ---> ",
+        inputBoxInline.style.padding
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      // Overrides the existing CSS inline style
+      // 'cssText' -> modify existing css styles using 'property:value;' pairs
+      inputBoxInline.style.cssText = "width:200px";
+      console.log("inputBoxInline  ---> ", inputBoxInline);
+      console.log("Style of inputBoxInline  ---> ", inputBoxInline.style);
+      console.log(
+        "CSS Text Style of inputBoxInline  ---> ",
+        inputBoxInline.style.cssText
+      );
+      console.log(
+        "BackgroundColor Style of inputBoxInline  ---> ",
+        inputBoxInline.style.backgroundColor
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      // Concatenates the style to existing CSS style and overrides value of existing property
+      inputBoxInline.style.cssText +=
+        "border:2px solid yellow; height:50px; background-color:pink";
+      console.log("inputBoxInline  ---> ", inputBoxInline);
+      console.log("Style of inputBoxInline  ---> ", inputBoxInline.style);
+      console.log(
+        "CSS Text Style of inputBoxInline  ---> ",
+        inputBoxInline.style.cssText
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      // Internal CSS Styles (considers default styles also)
+      let inputBoxInternal = document.getElementById("internalId");
+      console.log("inputBoxInternal  ---> ", inputBoxInternal);
+      // 'window' level property (not 'document' level)
+      console.log(
+        "Window level ComputedStyle of 'inputBoxInternal'  ---> ",
+        window.getComputedStyle(inputBoxInternal)
+      );
+      console.log(
+        "Window level BackgroundColor ComputedStyle of 'inputBoxInternal'  ---> ",
+        window.getComputedStyle(inputBoxInternal).backgroundColor
+      );
+      console.log(
+        "Window level FontSize ComputerStyle of 'inputBoxInternal'  ---> ",
+        window.getComputedStyle(inputBoxInternal).fontSize
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+    </script>
+  </body>
+</html>

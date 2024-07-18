@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="parentNode1" style="background-color: palegoldenrod">
+      <li>Child 1</li>
+      <li style="display: none">Child 2</li>
+      <li>
+        Child 3 Start
+        <p>
+          Lorem ipsum dolor sit amet <strong>consectetur</strong> adipisicing
+          elit.
+          <script>
+            console.log("Stript inside 'p' tag");
+          </script>
+          Facilis corporis cupiditate iure dolores. Debitis, consequatur aperiam
+          possimus similique unde ut!
+        </p>
+        Child 3 End
+      </li>
+      <li>Child 4</li>
+    </ul>
+    <hr />
+
+    <div id="parentNode2" style="background-color: peachpuff">
+      <p>Initial Text of parentNode2</p>
+    </div>
+    <hr />
+
+    <div id="parentNode3" style="background-color: paleturquoise">
+      <p>Initial Text of parentNode3</p>
+    </div>
+    <hr />
+
+    <ul id="parentNode4" style="background-color: pink">
+      <li>List Item 1</li>
+      <li>List Item 2</li>
+      <li>List Item 3</li>
+    </ul>
+    <hr />
+
+    <ul id="parentNode5" style="background-color: palegreen">
+      <li>Node 1</li>
+      <li>Node 2</li>
+      <li>Node 4</li>
+      <li>Node 5</li>
+      <li>Node 6</li>
+    </ul>
+    <hr />
+
+    <ul id="parentNode6" style="background-color: peru">
+      <li>Element 1</li>
+      <li>Element 2</li>
+      <li>Element 3</li>
+    </ul>
+    <hr />
+
+    <h3>Avoid using innerHTML</h3>
+    <section id="innerHTMLSection">
+      <button id="innerHTMLButton">innerHTML</button>
+    </section>
+    <section id="fragmentSection">
+      <button id="fragmentButton">Fragment</button>
+    </section>
+    <br />
+
+    <form action="">
+      <input type="text" id="input" />
+      <button type="submit">Submit</button>
+      <span id="textDisplay">Random Text</span>
+    </form>
+    <hr />
+
+    <script>
+      console.log("Creation of element");
+      let divCreatedElement = document.createElement("div");
+      console.log("divCreatedElement  ---> ", divCreatedElement);
+      // innerHTML follows HTML tags rule
+      divCreatedElement.innerHTML =
+        "<h4><em>Heading4</em> inside created 'div' element written using 'innerHTML'</h4>";
+      divCreatedElement.id = "idAdded";
+      divCreatedElement.className = "classNameAdded";
+      // Adds a node to end of the list of child nodes of a specific parent node and Moves an existing child node to a new position within the document
+      document.body.appendChild(divCreatedElement);
+      console.log("divCreatedElement  --->", divCreatedElement);
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      console.log("Appending of element");
+      let parentNodeElement1 = document.querySelector("#parentNode1");
+      let createdElement = document.createElement("li");
+      createdElement.innerText = "Child 5";
+      parentNodeElement1.appendChild(createdElement);
+      console.log(
+        "createdElement appended at end of '#parentNode1'  ---> ",
+        createdElement
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      console.log("Replacing element");
+      let oldChildElement = createdElement.previousElementSibling;
+      console.log("oldChildElement  ---> ", oldChildElement);
+      let newChildElement = document.createElement("li");
+      newChildElement.innerHTML = "New Child 4";
+      parentNodeElement1.replaceChild(newChildElement, oldChildElement);
+      console.log(
+        "newChildElement (4th Child) replaces 'previousElementSibling' of 'createdElement' of '#parentNode1'  ---> ",
+        newChildElement
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log(
+        "Differences between 'textContent', 'innerText', 'innerHTML'"
+      );
+      console.log("parentNodeElement1  ---> ", parentNodeElement1);
+
+      // textContent -> Unformatted display of content in HTML Document along with its indentation but doesn't display the HTML Tags
+      // returns the text content of a node and its descendants
+      // 'child 5' is added without an enter-space, hence with no indent
+      // 'script' and 'strong' tag are not displayed
+      console.log(
+        "parentNodeElement1.textContent  ---> ",
+        parentNodeElement1.textContent
+      );
+
+      // innerText -> Formatted display of only the pure text that will be displayed in the browser window (Output of HTML File)
+      // it follows only visible contents following CSS styles
+      console.log(
+        "parentNodeElement1.innerText  ---> ",
+        parentNodeElement1.innerText
+      );
+
+      // innerHTML -> Displays the contents as it is in HTML File in the editor
+      console.log(
+        "parentNodeElement1.innerHTML  ---> ",
+        parentNodeElement1.innerHTML
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      // Deletes the old text and adds the given text
+      let parentNodeElement2 = document.querySelector("#parentNode2");
+      console.log(
+        "parentNodeElement2 (before modifying)  ---> ",
+        parentNodeElement2
+      );
+      console.log(
+        "parentNodeElement2 (before modifying)  ---> ",
+        parentNodeElement2.textContent
+      );
+      parentNodeElement2.textContent = "Added Text using 'textContent'";
+      console.log(
+        "parentNodeElement2 (after modifying)  ---> ",
+        parentNodeElement2.textContent
+      );
+      console.log(
+        "parentNodeElement2 (after modifying)  ---> ",
+        parentNodeElement2
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      // Allows usage of HTML Tags
+      let parentNodeElement3 = document.querySelector("#parentNode3");
+      parentNodeElement3.innerHTML =
+        "<h4>Added Text with <em>Heading4</em> Tag Style using 'innerHTML'</h4>";
+      console.log("parentNodeElement3  ---> ", parentNodeElement3);
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      // Insert one or more nodes after the element
+      parentNodeElement2.after("string 1", "~string 2", "...", " string n");
+      console.log(
+        "parentNodeElement2.nextSibling ---> ",
+        parentNodeElement2.nextSibling
+      );
+      console.log(
+        "parentNodeElement2.nextElementSibling ---> ",
+        parentNodeElement2.nextElementSibling
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      const heading6 = document.createElement("u");
+      heading6.innerText = "Added using 'innerText' and usage of CSS Style";
+      heading6.style.color = "red";
+      // Multiple elements can be added as the last child of parent node
+      parentNodeElement3.append("Append String1", "Append String2  ", heading6);
+      // Multiple elements can be added as the first child of parent node
+      parentNodeElement3.prepend(
+        "Prepend String1",
+        "Prepend String2  ",
+        heading6
+      );
+      // Only the recent operation is considered for a same element (here -> h6)
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log("insertAdjacentHTML");
+      // 'insertAdjacentHTML' inserts node at specified position
+      let parentNodeElement4 = document.querySelector("#parentNode4");
+      parentNodeElement4.insertAdjacentHTML(
+        "beforebegin",
+        "<p>Before Begin Position using 'insertAdjacentHTML'</p>"
+      );
+      parentNodeElement4.insertAdjacentHTML(
+        "afterbegin",
+        "<h5>After Begin Position using 'insertAdjacentHTML'</h5>"
+      );
+      parentNodeElement4.insertAdjacentHTML(
+        "beforeend",
+        "<h6>Before End Position using 'insertAdjacentHTML'</h6>"
+      );
+      parentNodeElement4.insertAdjacentHTML(
+        "afterend",
+        "<li>After End Position using 'insertAdjacentHTML'</li>"
+      );
+      console.log(
+        "parentNodeElement4 using 'insertAdjacentHTML'  ---> ",
+        parentNodeElement4
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      console.log("insertAdjacentElement");
+      // 'insertAdjacentElement' inserts element at specified position
+      const adjacentElementBeforeBegin = document.createElement("i");
+      adjacentElementBeforeBegin.innerHTML = "Adjacent Element Before Begin";
+      adjacentElementBeforeBegin.style.color = "blue";
+      parentNodeElement4.insertAdjacentElement(
+        "beforebegin",
+        adjacentElementBeforeBegin
+      );
+      const adjacentElementBeforeEnd = document.createElement("i");
+      adjacentElementBeforeEnd.innerHTML = "Adjacent Element Before End";
+      adjacentElementBeforeEnd.style.color = "blue";
+      parentNodeElement4.insertAdjacentElement(
+        "beforeend",
+        adjacentElementBeforeEnd
+      );
+      console.log(
+        "parentNodeElement4 using 'insertAdjacentElement'  ---> ",
+        parentNodeElement4
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log("Cloning");
+      // clones only parent -> 'false' by default
+      let cloneElement = parentNodeElement4.cloneNode();
+      console.log("cloneElement  ---> ", cloneElement);
+
+      // clones descendents also
+      let cloneDescendantsElement = parentNodeElement4.cloneNode(true);
+      console.log("cloneDescendantsElement  ---> ", cloneDescendantsElement);
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log("Insertion Before an element");
+      let parentNodeElement5 = document.querySelector("#parentNode5");
+      // inserts a new node before an existing node as a child node of a parent node
+      let newNodeElement1 = document.createElement("li");
+      newNodeElement1.innerText =
+        "<h3 style='color:blue'> Node 0 Inserted using 'innerText'</h3>";
+      console.log(
+        "Inserted before  ---> ",
+        parentNodeElement5.firstElementChild
+      );
+      parentNodeElement5.insertBefore(
+        newNodeElement1,
+        parentNodeElement5.firstElementChild
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      let newNodeElement2 = document.createElement("li");
+      newNodeElement2.textContent =
+        "<h3 style='color:blue'> Node 3 Inserted using 'textContent'</h3>";
+      console.log(
+        "Inserted before  ---> ",
+        parentNodeElement5.lastElementChild.previousElementSibling
+          .previousElementSibling
+      );
+      parentNodeElement5.insertBefore(
+        newNodeElement2,
+        parentNodeElement5.lastElementChild.previousElementSibling
+          .previousElementSibling
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      let newNodeElement3 = document.createElement("li");
+      newNodeElement3.innerHTML =
+        "<h6 style='color:blue'> Node 4 Inserted using 'innerHTML'</h6>";
+      console.log(
+        "Inserted before  ---> ",
+        parentNodeElement5.lastElementChild.previousElementSibling
+      );
+      parentNodeElement5.insertBefore(
+        newNodeElement3,
+        parentNodeElement5.lastElementChild.previousElementSibling
+      );
+      console.log(
+        "parentNodeElement5 After insertion  ---> ",
+        parentNodeElement5
+      );
+      console.log(parentNodeElement5.lastElementChild);
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log("Removal of nodes");
+      // removes the node passed
+      console.log("parentNodeElement5 Initial  ---> ", parentNodeElement5);
+      parentNodeElement5.removeChild(parentNodeElement5.lastElementChild);
+      console.log(
+        "parentNodeElement5 After removal of LastElementChild  ---> ",
+        parentNodeElement5
+      );
+      let parentNodeElement6 = document.querySelector("#parentNode6");
+      console.log("parentNodeElement6 Initial  ---> ", parentNodeElement6);
+      parentNodeElement6.remove();
+      console.log(
+        "parentNodeElement6 After removal of all elements  ---> ",
+        parentNodeElement6
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log("Document Body  ---> ", document.body);
+
+      // Avoid using 'innerHTML'
+      const initApp = async () => {
+        const innerHTMLButton = document.getElementById("innerHTMLButton");
+        innerHTMLButton.addEventListener("click", createParas1);
+        const fragmentButton = document.getElementById("fragmentButton");
+        fragmentButton.addEventListener("click", createParas2);
+
+        const form = document.querySelector("form");
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          processUserInput();
+        });
+      };
+      // Kick off the App when DOM Content is fully loaded
+      document.addEventListener("DOMContentLoaded", initApp);
+
+      // innerHTML -> Low Performance
+      const createParas1 = () => {
+        const start = Date.now();
+        const section = document.querySelector("#innerHTMLSection");
+        let i = 0;
+        while (i < 500) {
+          section.innerHTML += `<p>My Value is ${i} and I was written at ${Date.now()} using innerHTML</p>`;
+          i++;
+        }
+        const end = Date.now();
+        console.log("Duration of 'innerHTML'  ---> ", end - start);
+      };
+
+      // fragment -> High Performance
+      const createParas2 = () => {
+        const start = Date.now();
+        const section = document.querySelector("#fragmentSection");
+        // Lightweight part of the document (Not directly attached to document)
+        const fragment = document.createDocumentFragment();
+        let i = 0;
+        while (i < 500) {
+          const p = document.createElement("p");
+          p.textContent = `<p>My Value is ${i} and I was written at ${Date.now()} using fragment</p>`;
+          // Content can be attached to the fragment
+          fragment.append(p);
+          i++;
+        }
+        // Fragment is like a div and it is not really added to the DOM, but only the content inside the fragemnt is appended to the DOM
+        section.append(fragment);
+        const end = Date.now();
+        console.log("Duration of 'fragment'  ---> ", end - start);
+      };
+
+      // innerHTML -> Possibility of cross site scripting
+      const processUserInput = () => {
+        // Try with '''<img src="x" onerror='alert("Image not found")'/>'''
+        const rawData = document.querySelector("#input").value;
+        const textDisplay = document.querySelector("#textDisplay");
+        // Whatever typed is converted into code and that respective behaviour happens (JS Throws an alert if 'src' is not found for 'img')
+        // textDisplay.innerHTML = rawData;
+
+        // Whatever types is displayed as it is
+        // textDisplay.textContent = rawData;
+
+        // Cleaning of rawData
+        const cleanData = sanitizeInput(rawData);
+        textDisplay.innerHTML = cleanData;
+      };
+      // Always best practice to sanitize the rawInputValue
+      const sanitizeInput = (rawText) => {
+        const div = document.createElement("div");
+        div.textContent = rawText;
+        // returns only the 'innerHTML' textContent of the 'div' and not the entire 'div'
+        return div.innerHTML;
+      };
+    </script>
+  </body>
+</html>

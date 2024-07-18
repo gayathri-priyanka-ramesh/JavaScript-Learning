@@ -1,0 +1,13 @@
+{
+  "comment": "It is similar to JS Object, but [\"\"] are mandate in JSON Objects, comments are not allowed in JSON File and can be given as a Key:Value pair inside the JSON Object ",
+
+  "personName": {
+    "firstName": "Gayathri",
+    "middleName": "Priyanka",
+    "lastName": "Ramesh"
+  },
+  "age": 21,
+  "location": ["Salem", 636006],
+  "isWebDeveloper": true,
+  "111222": "fav date"
+}

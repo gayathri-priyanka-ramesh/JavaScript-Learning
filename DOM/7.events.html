@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        margin: auto;
+        display: flex;
+        align-items: center;
+      }
+      .card {
+        background-color: black;
+        color: yellow;
+        width: 50px;
+        height: 50px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- JavaScript's interaction with HTML is handled through Events that occur when user or browser manipulates a page (onload, onclick, onmove, etc.) -->
+    <div class="container">
+      <!-- 1 ---  
+            Using HTML Attributes -> 'Click' event is handled using HTML Attribute 'onclick' which can contain JavaScript code -->
+      <button
+        type="button"
+        id="buttonClickEventID1"
+        onclick="console.log(this.id);"
+      >
+        ID using 'this' keyword
+      </button>
+
+      <button type="button" id="buttonClickEventID2" onclick="console.log(id);">
+        ID of element
+      </button>
+
+      <button
+        type="button"
+        id="buttonClickEventID3"
+        onclick="console.log(type)"
+      >
+        Type of element
+      </button>
+
+      <button
+        type="button"
+        onclick="console.log('Button Click Handled using HTML Attribute Directly')"
+      >
+        Direct HTML Attribute
+      </button>
+
+      <button type="button" onclick="fuctionCalled()">
+        Calling Function from HTML Attribute
+      </button>
+
+      <!-- JavaScript Passes 'event' object to event handler -->
+      <button type="button" onclick="console.log(event)">
+        Event Object passed by JavaScript
+      </button>
+
+      <button type="button" onclick="console.log(event.type)">
+        Event Type
+      </button>
+
+      <button type="button" onclick="console.log(event.target)">
+        Event Target
+      </button>
+
+      <button type="button" onclick="console.log(this)">
+        Event Target using 'this' keyword
+      </button>
+    </div>
+    <hr />
+
+    <div class="container">
+      <button id="buttonClickEventIDExample1">JavaScript Function</button>
+      <button id="buttonClickEventIDExample2">Removing Event Handler</button>
+    </div>
+    <hr />
+
+    <div class="container">
+      <button id="buttonClickEventIDExample3">'addEventListener' method</button>
+      <button id="buttonClickEventIDExample4">
+        Calling Function using 'addEventListener'
+      </button>
+      <button id="buttonClickEventIDExample5">
+        Event objects using 'addEventListener'
+      </button>
+      <button id="buttonClickEventIDExample6">
+        'removeEventListener' method
+      </button>
+    </div>
+    <hr />
+
+    <form action="">
+      <input type="text" name="" id="" />
+      <input type="submit" value="Submit" />
+    </form>
+    <hr />
+
+    <h2>Event Propagation</h2>
+    <div
+      id="outerBox"
+      class="box"
+      style="
+        background-color: rgba(255, 0, 0, 0.8);
+        height: 250px;
+        width: 250px;
+      "
+    >
+      <div
+        id="middleBox"
+        class="box"
+        style="
+          background-color: rgba(0, 0, 255, 0.8);
+          height: 150px;
+          width: 150px;
+        "
+      >
+        <div
+          id="innerBox"
+          class="box"
+          style="
+            background-color: rgba(255, 255, 0, 0.8);
+            height: 50px;
+            width: 50px;
+          "
+        ></div>
+      </div>
+    </div>
+    <hr />
+
+    <h2>Event Delegation</h2>
+    <div
+      id="categorySection"
+      class="box"
+      style="background-color: orange; height: 150px; width: 500px"
+    >
+      <div id="categoryCard1" class="card">Card 1</div>
+      <div id="categoryCard2" class="card">Card 2</div>
+      <div id="categoryCard3" class="card">Card 3</div>
+      <button>Button1</button>
+      <button>Button1</button>
+      <button>Button1</button>
+    </div>
+
+    <div id="info">
+      <!-- Behaviour is attached inside the data attribute for any no. of fields (instead of handling each field seperately) -->
+      <input type="text" id="name" data-uppercasemandate /> <br />
+      <input type="text" id="mail" /> <br />
+      <input type="text" id="roll" data-uppercasemandate />
+    </div>
+
+    <script>
+      /* Event Handler / Event Listener -> Response given -> Piece of code executed when the event occurs
+
+         Event Propagation -> This follows a 'capturing-bubbling' cycle (i.e.) from outer element to inner target element and again from inner target element to outer element
+                              Event on an element is propagated to its parent, grandparent, and so on until reaching the Global Object 'window'
+                              There is a high Performance issue as this Propagation Cycle is very expensive
+              Eg: A click on an element is actually the click on all its parent elements (i.e.) from the element to its parent, to the 'body', to the 'html' document and finally to the 'window' object
+
+         2 ways of Event Propagation in the DOM Tree (Bubbling Up & Trickling Down)
+              Event Bubbling             -> Event starts at most specific element and flows towards least specific element (Child to Parent)
+              Event Capturing / Tricking -> Event starts at least specific element and flows towards most specific element (Parent to Child)
+
+         Standard in Event Propagation
+              Netscape  -> 'Capturing' is main fundamental in event propagation (Back in old days)
+              Microsoft -> 'Bubbling' makes more sense
+              W3C Model -> 'Bubbling' and 'Capturing' are acceptable standards as per developer's usa case
+                           The 'trickling-bubbling' Cycle will anyways continue but can be controled using 'useCapture=true|false' whether to Capture In or Bubble Out the events
+
+         Event Delegation -> Technique to handle event in better way during Bubbling
+                             Lot of Event Handlers hanging around the webpage is a critical performance bottleneck
+
+            Scenario -> E-commerce site has category section with different cards for each category
+                        A click on each card is handle with different event listeners to navigate to that particular category
+                        If the page is with infinite scroll, then infinite event handlers are hung in the webpage as the page is scrolled
+            
+            Solution -> Instead of attaching individual events to infinte child elements, attach a single event handler to the parent container
+
+            Pros -> Saves a lot of memory as single handler mitigate performance bottlenect
+                    Less code with DRY Principle
+                    Handle dynamic manipulation of DOM as the event handler in parent with handle the events of all children
+            Cons -> All the events are not bubbled up (blur, focus, resize, etc.)
+                    'stopPropagation()' inside any child will prevent bubbling up
+      */
+
+      // 3 ways to assign event handlers
+
+      // Fuction to be called in HTML Attribute
+      function fuctionCalled() {
+        console.log("Button Click Handled by Calling a Function");
+      }
+
+      // 2 --->
+      // Adding Event Handler name in JavaScript
+      let buttonElement1 = document.getElementById(
+        "buttonClickEventIDExample1"
+      );
+      buttonElement1.onclick = function () {
+        console.log("Button Click Handled using JavaScript");
+        console.log(this);
+        console.log(this.id);
+        console.log(event);
+      };
+      // Event Handler Removed in JavaScript
+      let buttonElement2 = document.getElementById(
+        "buttonClickEventIDExample2"
+      );
+      buttonElement2.onclick = null;
+
+      // 3 --->
+      // 'addEventListener()' method
+      let buttonElement3 = document.getElementById(
+        "buttonClickEventIDExample3"
+      );
+      // It takes a callback function which is to be executed when the event occurs
+      buttonElement3.addEventListener("click", () =>
+        // 'click' event pushes this callback function into the call stack and executes it
+        console.log("Button Click Handled using 'addEventListener' method")
+      );
+
+      // 'addEventListener()' method to call a function
+      let buttonElement4 = document.getElementById(
+        "buttonClickEventIDExample4"
+      );
+      buttonElement4.addEventListener("click", fuctionCalled);
+
+      // JavaScript Passes 'event' object to event handler (with or without 'event' parameter in function)
+      let buttonElement5 = document.getElementById(
+        "buttonClickEventIDExample5"
+      );
+      // buttonElement5.addEventListener("click", function (event) {
+      buttonElement5.addEventListener("click", function () {
+        console.log(event);
+        console.log(event.type);
+        console.log(this);
+        console.log(this.id);
+      });
+
+      // 'removeEventListener' method -> to remove the added event listener
+      let buttonElement6 = document.getElementById(
+        "buttonClickEventIDExample6"
+      );
+      // Event Listeners are heavy and takes more memory as it forms a closure to remember the variables of its lexical scope (not freed up even when call stack is empty as the event may occur at any point of time)
+      // When using 'removeEventListener' all the memory stored by the 'addEventListener' and its closure is garbage collected
+      buttonElement6.removeEventListener("click", fuctionCalled);
+      // cannot be used for anonymous function
+
+      // Form Submit
+      const form = document.querySelector("form");
+      const input = document.querySelector("input");
+      form.addEventListener("submit", (event) => {
+        console.log("Form Submitted with Input value  ---> ", input.value);
+        console.log(event);
+        event.preventDefault();
+        console.log(
+          "If 'event.preventDefault()' is not given, the event will just flash and disappear in the console as the browser refreshes on submitting the form which is its default behaviour "
+        );
+      });
+
+      // Event Propagation
+      window.addEventListener(
+        "click",
+        (event) => {
+          console.log("window Clicked Bubble\n", event);
+        } // 3rd paramter of 'assEventListener is 'false' by default
+      );
+      window.addEventListener(
+        "click",
+        (event) => {
+          console.log("window Clicked Capture\n", event);
+        },
+        true
+      );
+      document.querySelector("#outerBox").addEventListener(
+        "click",
+        (e) => {
+          console.log("outerBox Clicked Bubble 1  ---  Propagation Stopped");
+          // Allows other event handlers on the same element to be executed
+          // e.stopPropagation();
+        },
+        (useCaptue = false)
+      );
+      document.querySelector("#outerBox").addEventListener(
+        "click",
+        (e) => {
+          console.log("outerBox Clicked Bubble 2  ---  Propagation Stopped");
+        },
+        (useCaptue = false)
+      );
+      document.querySelector("#outerBox").addEventListener(
+        "click",
+        (e) => {
+          console.log("outerBox Clicked Capture 1  ---  Propagation Stopped");
+          // e.stopPropagation();
+        },
+        (useCaptue = true)
+      );
+      document.querySelector("#outerBox").addEventListener(
+        "click",
+        (e) => {
+          console.log("outerBox Clicked Capture 2  ---  Propagation Stopped");
+        },
+        (useCaptue = true)
+      );
+      document.querySelector("#middleBox").addEventListener(
+        "click",
+        (e) => {
+          console.log(
+            "middleBox Clicked Bubble 1  ---  Immediate Propagation Stopped"
+          );
+          // Prevents other event handlers on the same element to be executed
+          e.stopImmediatePropagation();
+        },
+        (anyName = false)
+      );
+      document.querySelector("#middleBox").addEventListener(
+        "click",
+        (e) => {
+          console.log(
+            "middleBox Clicked Bubble 2  ---  Immediate Propagation Stopped"
+          );
+        },
+        (anyName = false)
+      );
+      document.querySelector("#middleBox").addEventListener(
+        "click",
+        (e) => {
+          console.log(
+            "middleBox Clicked Capture 1  ---  Immediate Propagation Stopped"
+          );
+          // e.stopImmediatePropagation();
+        },
+        (anyName = true)
+      );
+      document.querySelector("#middleBox").addEventListener(
+        "click",
+        (e) => {
+          console.log(
+            "middleBox Clicked Capture 2  ---  Immediate Propagation Stopped"
+          );
+        },
+        (anyName = true)
+      );
+      document.querySelector("#innerBox").addEventListener(
+        "click",
+        (e) => {
+          console.log("innerBox Clicked Bubble");
+        },
+        false
+      );
+      document.querySelector("#innerBox").addEventListener(
+        "click",
+        (e) => {
+          console.log("innerBox Clicked Capture");
+        },
+        true
+      );
+
+      // Event Delegation
+      document
+        .querySelector("#categorySection")
+        .addEventListener("click", (e) => {
+          console.log("Target Element  ---> ", e.target);
+          // Only on click of desired card it is to be redirected (not on other tabs, buttons inside the section)
+          if (e.target.tagName == "DIV")
+            console.log("Card Clicked  ---> ", e.target.id);
+          // window.location.href = "/" + e.target.id;
+        });
+
+      // Reusable Behaviour Pattern
+      document.querySelector("#info").addEventListener("keyup", (event) => {
+        console.log("Event  ---> ", event);
+        if (event.target.dataset.uppercasemandate != undefined) {
+          console.log("Current Value  ---> ", event.target.value);
+          event.target.value = event.target.value.toUpperCase();
+          console.log("UpperCase Value  ---> ", event.target.value);
+        }
+      });
+    </script>
+  </body>
+</html>

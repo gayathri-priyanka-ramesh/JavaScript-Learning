@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="userId" placeholder="userPlaceholder" />
+    <a href="https://www.google.com" target="_blank"
+      >Google - will be changed</a
+    >
+
+    <script>
+      let inputBox = document.getElementById("userId");
+      console.log("Attributes of inputBox  ---> ", inputBox.attributes);
+      console.log(
+        "Value of 'type' Attribute using '.' operator  ---> ",
+        inputBox.type
+      );
+      console.log(
+        "Value of 'type' Attribute  using 'getAttribute' method  ---> ",
+        inputBox.getAttribute("type")
+      );
+      console.log(
+        "Value of 'placeholder' Attribute using '.' operator  ---> ",
+        inputBox.placeholder
+      );
+      console.log(
+        "Value of 'placeholder' Attribute  using 'getAttribute' method  ---> ",
+        inputBox.getAttribute("placeholder")
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      console.log(
+        "Value of 'value' Attribute using '.' operator  ---> ",
+        inputBox.value
+      );
+      console.log(
+        "Value of 'value' Attribute  using 'getAttribute' method  ---> ",
+        inputBox.getAttribute("value")
+      );
+      // Value set using 'setAttribute' method is displayed in HTML Elements in developer tools, but, the value set using '.' operator is displayed in the browser webpage
+      console.log(
+        "Value of 'value' Attribute while assigning 'AAA'  ---> ",
+        (inputBox.value = "AAA")
+      );
+      console.log(
+        "Value of 'value' Attribute using '.' operator after assigning 'AAA' ---> ",
+        inputBox.value
+      );
+      console.log(
+        "Value of 'value' Attribute  using 'getAttribute' method after assigning 'AAA' ---> ",
+        inputBox.getAttribute("value")
+      );
+      inputBox.setAttribute("value", "BBB");
+      console.log(
+        "Value of 'value' Attribute  using 'getAttribute' method after setting 'BBB' ---> ",
+        inputBox.getAttribute("value")
+      );
+      console.log(
+        "Value of 'value' Attribute using '.' operator after setting 'BBB' and while assigning 'AAA' ---> ",
+        (inputBox.value = "AAA")
+      );
+      console.log(
+        "Value of 'value' Attribute using '.' operator after setting 'BBB'and after assigning 'AAA' ---> ",
+        inputBox.value
+      );
+      console.log(
+        "Value of 'value' Attribute using 'getAttribute' method after setting 'BBB'and after assigning 'AAA  ---> ",
+        inputBox.getAttribute("value")
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      inputBox.setAttribute("class", "userClass");
+      console.log("inputBox after adding 'class'  ---> ", inputBox);
+      console.log(
+        "Attributes of inputBox after adding  ---> ",
+        inputBox.attributes
+      );
+      console.log(
+        "Is 'name' attribute present  ---> ",
+        inputBox.hasAttribute("name")
+      );
+      console.log(
+        "Is 'class' attribute present  ---> ",
+        inputBox.hasAttribute("class")
+      );
+      console.log(
+        "Is 'placeholder' attribute present  ---> ",
+        inputBox.hasAttribute("placeholder")
+      );
+      inputBox.removeAttribute("placeholder");
+      console.log("inputBox after removing 'placeholder'  ---> ", inputBox);
+      console.log(
+        "Attributes of inputBox after removing 'placeholder'  ---> ",
+        inputBox.attributes
+      );
+      console.log(
+        "Is 'placeholder' attribute present  ---> ",
+        inputBox.hasAttribute("placeholder")
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      const anchor = document.querySelector("a");
+      console.log("href of 'a' tag  ---> ", anchor.href);
+      anchor.href = "https://www.youtube.com/@huxnwebdev";
+      console.log("href of 'a' tag after updating  ---> ", anchor.href);
+    </script>
+  </body>
+</html>

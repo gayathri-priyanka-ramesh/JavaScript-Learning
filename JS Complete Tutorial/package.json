@@ -1,0 +1,15 @@
+{
+  "name": "js-complete-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "0. script.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

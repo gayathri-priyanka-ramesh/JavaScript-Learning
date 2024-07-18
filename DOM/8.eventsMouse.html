@@ -1,0 +1,125 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse</title>
+    <style>
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+      .teal {
+        color: teal;
+      }
+      .steelblue {
+        color: steelblue;
+      }
+      .orange {
+        color: orange;
+      }
+      .purple {
+        color: purple;
+      }
+      .pink {
+        color: pink;
+      }
+      .crimson {
+        color: crimson;
+      }
+      .chocolate {
+        color: chocolate;
+      }
+      .aqua {
+        color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="click">The event occurs when the user clicks on an element</p>
+    <p class="contextmenu">
+      The event occurs when the user right-clicks on an element to open a
+      context menu
+    </p>
+    <p class="dblclick">
+      The event occurs when the user double-clicks on an element
+    </p>
+    <p class="mousedown">
+      The event occurs when the user presses a mouse button over an element
+    </p>
+    <p class="mouseenter">
+      The event occurs when the pointer is moved onto an element
+    </p>
+    <p class="mouseleave">
+      The event occurs when the pointer is moved out of an element
+    </p>
+    <p class="mousemove">
+      The event occurs when the pointer is moving while it is over an element
+    </p>
+    <p class="mouseout">
+      The event occurs when a user moves the mouse pointer out of an element, or
+      out of one of its children
+    </p>
+    <p class="mouseover">
+      The event occurs when the pointer is moved onto an element, or onto one of
+      its children
+    </p>
+    <p class="mouseup">
+      The event occurs when a user releases a mouse button over an element
+    </p>
+    <script>
+      let one = document.querySelector(".click");
+      let two = document.querySelector(".contextmenu");
+      let three = document.querySelector(".dblclick");
+      let four = document.querySelector(".mousedown");
+      let five = document.querySelector(".mouseenter");
+      let six = document.querySelector(".mouseleave");
+      let seven = document.querySelector(".mousemove");
+      let eight = document.querySelector(".mouseout");
+      let nine = document.querySelector(".mouseover");
+      let ten = document.querySelector(".mouseup");
+
+      one.addEventListener("click", () => {
+        one.classList.toggle("red");
+      });
+
+      two.addEventListener("contextmenu", () => {
+        two.classList.toggle("blue");
+      });
+
+      three.addEventListener("dblclick", () => {
+        three.classList.toggle("teal");
+      });
+
+      four.addEventListener("mousedown", () => {
+        four.classList.toggle("steelblue");
+      });
+
+      five.addEventListener("mouseenter", () => {
+        five.classList.toggle("orange");
+      });
+
+      six.addEventListener("mouseleave", () => {
+        six.classList.toggle("purple");
+      });
+
+      seven.addEventListener("mousemove", () => {
+        seven.classList.toggle("pink");
+      });
+
+      eight.addEventListener("mouseout", () => {
+        eight.classList.toggle("crimson");
+      });
+
+      nine.addEventListener("mouseover", () => {
+        nine.classList.toggle("chocolate");
+      });
+
+      ten.addEventListener("mouseup", () => {
+        ten.classList.toggle("aqua");
+      });
+    </script>
+  </body>
+</html>

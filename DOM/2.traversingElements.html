@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="parent">
+      <p class="child"><span>Span</span>Child 1</p>
+      <p>Child 2</p>
+      <p id="thirdChild">Child 3</p>
+      <p>Child 4</p>
+      <p>Child 5</p>
+    </div>
+
+    <script>
+      console.log("Bottom-Up Traversal");
+      // '.parentNode' returns the parent of accessed child
+      let childNodeElement = document.querySelector(".child");
+      console.log("Parent Node of 'p' tag  ---> ", childNodeElement.parentNode);
+      console.log(
+        "Parent Element of 'p' tag  ---> ",
+        childNodeElement.parentElement
+      );
+      console.log(
+        "Parent Node of 'div' tag  ---> ",
+        childNodeElement.parentNode.parentNode
+      );
+      console.log(
+        "Parent Element of 'div' tag  ---> ",
+        childNodeElement.parentElement.parentElement
+      );
+      console.log(
+        "Parent Node of 'body' tag  ---> ",
+        childNodeElement.parentNode.parentNode.parentNode
+      );
+      console.log(
+        "Parent Element of 'body' tag  ---> ",
+        childNodeElement.parentElement.parentElement.parentElement
+      );
+      console.log(
+        "Parent Node of 'html' tag  ---> ",
+        childNodeElement.parentNode.parentNode.parentNode.parentNode
+      );
+      console.log(
+        "Parent Element of 'html' tag  ---> ",
+        childNodeElement.parentElement.parentElement.parentElement.parentElement
+      );
+      console.log(
+        "Parent Node of 'document'  ---> ",
+        childNodeElement.parentNode.parentNode.parentNode.parentNode.parentNode
+      );
+      console.log("Parent Element of 'null' is not possible");
+      console.log("Parent Node of 'null' is not possible");
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log("Top-Down Traversal");
+      let parentNodeElement = document.querySelector(".parent");
+      // 'enter-space' is considered a the First Child as it is given in the next line
+      console.log("FirstChild  ---> ", parentNodeElement.firstChild);
+      // returns the First Child Element
+      console.log(
+        "FirstElementChild  ---> ",
+        parentNodeElement.firstElementChild
+      );
+      // 'enter-space' is considered a the Last Child as it is given in the next line
+      console.log("LastChild  ---> ", parentNodeElement.lastChild);
+      // returns the Last Child Element
+      console.log(
+        "LastElementChild  ---> ",
+        parentNodeElement.lastElementChild
+      );
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+      // Nodes -> contain 'enter-space' as 'text' and it returns elements alone only if all the elements are given in same line in HTML
+      console.log("Child Nodes  ---> ", parentNodeElement.childNodes);
+      // Children -> contain only elements
+      console.log("Children  ---> ", parentNodeElement.children);
+      console.log("Child Nodes [0] ---> ", parentNodeElement.childNodes[0]);
+      console.log("Children [0] ---> ", parentNodeElement.children[0]);
+      console.log("Child Nodes [1] ---> ", parentNodeElement.childNodes[1]);
+      console.log("Children [1] ---> ", parentNodeElement.children[1]);
+      console.log("Child Nodes [2] ---> ", parentNodeElement.childNodes[2]);
+      console.log("Children [2] ---> ", parentNodeElement.children[2]);
+
+      console.log(
+        "Child Nodes [2] InnerText ---> ",
+        parentNodeElement.childNodes[2].innerText
+      );
+      console.log(
+        "Children [2] InnerText ---> ",
+        parentNodeElement.children[2].innerText
+      );
+      console.log(
+        "Child Nodes [2] innerHTML ---> ",
+        parentNodeElement.childNodes[2].innerHTML
+      );
+      console.log(
+        "Children [2] innerHTML ---> ",
+        parentNodeElement.children[2].innerHTML
+      );
+      console.log(
+        "Child Nodes [2] textContent ---> ",
+        parentNodeElement.childNodes[2].textContent
+      );
+      console.log(
+        "Children [2] textContent ---> ",
+        parentNodeElement.children[2].textContent
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+
+      console.log("Siblings");
+      let thirdChildElement = document.querySelector("#thirdChild");
+      console.log("PreviousSibling  ---> ", thirdChildElement.previousSibling);
+      console.log(
+        "PreviousElementSibling  ---> ",
+        thirdChildElement.previousElementSibling
+      );
+      console.log("NextSibling  ---> ", thirdChildElement.nextSibling);
+      console.log(
+        "NextElementSibling  ---> ",
+        thirdChildElement.nextElementSibling
+      );
+      console.log(
+        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      );
+    </script>
+  </body>
+</html>

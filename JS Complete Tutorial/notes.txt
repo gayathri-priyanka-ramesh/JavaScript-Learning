@@ -1,0 +1,107 @@
+Browser:
+It execute JS Code only because it has JS Runtime Environment (JS Engine and SuperPowers)
+It contains -> JS Engine and SuperPowers (Local Storage, Timer, URL space to connect to servers, UI to render the webpages)
+               JS Engine requires Web APIs to access the SuperPowers of browsers
+               Browser wraps all the SuperPower APIs into a Global Object 'Window' and gives access of the window to the Call Stack inside the JS Engine
+               WebAPI is plugged through 'window' to the JS code executes inside the Execution Context in the Call Stack
+
+Web APIs (not a part of JS):
+APIs are used to access the outer environment (browser, node.js) from within the JS Runtime Environment
+There could be different APIs for different environment like browsers, node.js, devices, etc. (setTimeOut, console are common to both browser and node.js with different internal implementation)
+In Browsers, the APIs are accessed using 'window' keyword [window.setTimeOut(), window.localStorage, window.console.log] or simply the webAPI name
+setTimeOut() -> Timers [setTimeOut(function(){...}, delay in ms)]
+DOM API      -> DOM Tree which is rendered [document.___]
+fetch()      -> Connect to externel Servers
+localStorage -> Database to store data in key:value pairs [localStorage.___]
+console      -> Text-based interface to interact with computer's OS or run code [console.___]
+Location     -> URL tab [https://www.___.___]
+
+JS Runtime Environment:
+JS can run on browsers, severs, lot of other devices like watch, light bulb, robots, water cooler, etc. with its own JS Runtime Environment 
+It is a big container which has all that are required to execute JS code -> JS Engine, APIs (used to access external environment), Event Loop, Callback Queue, Microtask Queue
+'node.js' -> Open Source JS Runtime Environment which has everything required to run JS code even outside the browser
+
+JS Engine 
+JS Code can be interpreter or compiled depending on JS Engine 
+1st JS Engine was built purely with a Interpretter as it was design to majorly run on browsers, which cannot wait for the code to compiler and the executed
+                Interpretter - Immediatly stars executing the code line by line with more speed
+                Compiler     - Whole code is compiled to form a optimised version of code for execution improving performance and efficiency
+Modern Browsers and modern JS Engines use Interpretter + Compiler (Just In Time (JIT) Compilation, Ahead Of Time Compilation)
+It takes in a high-level code and splits out machine-level code to be executed (It is not Hardware Machine but a Software Program written low level language)
+Heart of JS Runtime Environment
+Different JS Engines -> v8 - (Fastest, Written inside C++) Google Chrome, Node.js 
+                             Interpretter 'Ignition'
+                             Optimizing Compiler 'Turbo Fan'
+                             Garbage Collector'OilPan', 'Orinoco' - Mark & Sweep Algorithm
+                        Chakra - Microsoft Edge
+                        SpiderMonkey - Mozilla (First JS Engine originally created by the creator of JS 'Brendan Eich' when he was working in Netscape)
+                        Own JS Engine can be created following ES6 standards
+Takes in Code as Input, whick undergoes -> Parsing (Syntax Parser) - Breaks down Code into Tokens [let a=10  --- let, a, =, 10] and Convert Code to Abstract Syntax Tree (Refer: astexplorer.net)
+                                           Compilation             - Goes hand in hand with execution and happens in multiple phases      
+                                                   JIT Compilation - Optimzation of the code on the runtime for fast execution
+                                                      Interpretter - Converts AST (High-level code) into Byte code which moves to execution
+                                                      Compiler     - Optimizes the code (Inlining, Copy Elision, Inline Caching) while it is being interpreted 
+                                                   AOT Compilation - Compiler takes a piece of code whick is to be executed later and it optimizes it to form the Byte Code which goes to Execution                                            
+                                           Execution               - Goes hand in hand with Compilation
+                                                 Memory Heap       - Storehouse of all the memory allocated (variables and functions) and in constant sync with Call Stack, Garbage Collector, etc.
+                                                 Garbage Collector - Frees up the unused memory with 'Mark & Sweep' Algorithm
+                                                 Call Stack        - Manages creation and deletion of Execution Context
+
+Whenever any JS file is run, 3 things are crated -> Global Exection Context, Global Object ('Window' incase of browsers), 'this' variable
+Even when an empty JS file is run, the JS engine -> Creates a Global Exection Context ans sets up the memory space
+                                                    Creates a Global Window Object with built-in functions and methods that can be accessed anywhere in the program
+                                                    'this' keyword is also created which point to the 'Window' object at the global level
+                                                    this===window is 'true' at the global level
+                                                    All items in the Global Space (anything not inside any function) gets attached to the 'window' object and can be accessed using 'window.variableName' or 'this.variableName' or simply 'variableName', the same for methods and functions
+'this' is created even for the Functional Execution Context
+
+Exection Context:
+JS is a synchronous single-threaded language and everything in JS hapens inside 'Execution Context'
+Execution Context has 2 components ---> Memory Component -> Variable Environment which stores all the variables and values in key:value pairs
+                                        Code Component   -> Thread of Execution where code is executed one line at a time in a specific order
+For each JS program, a Global Execution Context (GEC) is created in 2 phases
+    Memory Creation Phase -> Allocates memory to all variables and functions line by line
+                                  Stores a spacial value 'undefined' for variables [variableName:undefined, functionInvocationVariable:undefined]
+                                  Stores the whole code for functions [functionName:{functionCode}]
+    Code Execution Phase  -> Stores the value of variable in the memory section [variableName:variableValue]
+                                  Skips function declaration and moves to function invocation part [functionName()]
+                                  Function is like a miny program and when invoked, a new Local Execution Context (LEC) is created for each invocation inside the Code component
+                                  Memory Creation Phase -> Stores 'undefined' for parameters and variables [parameterName:undefined, variableName:undefined, returnVariable:undefined] 
+                                  Code Execution Phase  -> Argument value is set for the parameter in memory component [parameterName:argumentValue]
+                                                           Evaluation of expressions are done and result is populated in memory component to return [returnVariable:expressionResult]
+                                                           'return' keyword returns the result of Local Execution Context to where the function was invoked (Global Execution Context)
+                                                           Local Execution Context for this instance of function is deleted completely
+                                  Result of Local Execution Context is populated in the memory of Global Execution Context [functionInvocationVariable:expressionResult]
+                                  After execution of all the lines, the Global Execution Context is deleted completely
+
+Call Stack (Main Thread) :
+The creation and deletion of Execution Context is managed using 'Call Stack' inside JS Engine
+It maintains the order of execution of the Exection Contexts
+It is known as Exection Context Stack, Program Stack, Control Stack, Runtime Stack, Machine Stack
+Whenever any JS program in run, the Call Stack is populated with GEC (Bottom of Call Stack contains GEC)
+Whenever a function a invoked, LEC is pushed inside the Call Stack and popped out after returning the result to where it was invoked
+One the whole program is executed, GEC is popped out and the Call Stack becomes empty
+As it can do only one thing at a time, the main thread shouldn't be blocked and timers are to be used for operations that takes more time
+Its main job is to execute whatever inside it and empty the stack as soon as possible without waiting for anything as it doesn't have any timer
+While using 'setTimeOut', the call stack (main thread) becomes empty when all the synchrounous tasks are completed and it is again populated once the timer expires
+
+Garbage Collector:
+It is like a program in the browser of in the JS Engine which frees up the untilized memory of unused variables
+JS is a high-level programming language and hence, allocation and deallocation of memory is done by JS Engine (not responsibility of the developers)
+
+Working of Asynchronous Functions inside the browser using WEB APIs:
+Registering the Callback Function in the WebAPI's Environment 'window'
+    'setTimeOut'       -> starts the timer
+    'addEventListener' -> attaches the event (until it is removed explicitly or with 'removeEventListener')
+    'fetch'            -> requests API calls to external servers and returns a promise once the data is retrieved
+Callback Function enters the Callback Queue (Task Queue is needed to handle all Callback Functions that comes through 'setTimeOut', DOM APIs with successive sequence of events i.e. multiple clicks, timers, etc.)
+    'setTimeOut'       -> as soon as the timer expires
+    'addEventListener' -> as soon as when the event occurs
+Callback Function enters the Microtask Queue (Higher Priority to handle all Callback Functions that comes through promises i.e. network calls, and Mutation Observers i.e. mutation in DOM Tree executes Callback Functions)
+    'fetch' -> as soon as the promise is resolved
+Event Loop acts as a Gatekeeper and continuously monitors the Microtask Queue, Callback Queue and the Call Stack
+Only if the Call Stack is empty, it pushes the Callback Function from Mricotask Queue to Call Stack, and only then from Callback queue to Call Stack
+Call Stack creates a Execution Context of the Callback Function to quickly execute it pops out the Execution Context
+Starvation of functions (waits a very long time) inside the Callback Queue if the tasks inside the Microtask Queue creates successive microtasks which blocks the Main Thread
+Concurrency Model makes the 'setTimeOut' Callback Function executed after a delay with the expiration of timer as the Main Thread may be busy due to Global Exection Contexts
+ 
