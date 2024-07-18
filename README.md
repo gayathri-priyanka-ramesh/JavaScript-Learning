@@ -137,4 +137,4 @@ A big thanks to the content creators for their comprehensive and insightful tuto
 - [Akshay Saini - Core JS Fundamentals](https://youtube.com/playlist?list=PLlasXeu85E9eLVlWFs-nz5PKXJU4f7Fks&feature=shared)
 - [Akshay Saini - Namaste JavaScript Season 1](https://youtube.com/playlist?list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&feature=shared)
 - [Akshay Saini - Namaste JavaScript Season 2](https://youtube.com/playlist?list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&feature=shared)
-- [Dave Gray - Advance JS Concepts](https://youtube.com/playlist?list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd&feature=shared)
+- [Dave Gray - Advance JavaScript Concepts](https://youtube.com/playlist?list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd&feature=shared)
