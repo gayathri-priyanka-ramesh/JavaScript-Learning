@@ -1,6 +1,6 @@
 # JavaScript Learning Repository
 
-This repository contains the files and projects I created while learning JavaScript through various tutorials. The content is organized into two main folders: "DOM" and "Complete Tutorial."
+This repository contains the files I created while learning <b>JavaScript</b> through various tutorials: <b>GreatStack</b>, <b>Huxn WebDev</b>, <b>Akshay Saini</b>, <b>Dave Gray</b> on <b>YouTube</b>.
 
 ## Repository Structure
 
