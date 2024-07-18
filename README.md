@@ -30,8 +30,6 @@ This repository contains the files and projects I created while learning JavaScr
   - For Loop
   - While Loop
   - Do-While Loop
-
-### Logical Operations
 - Logical Operators
 
 ### Data Structures
@@ -98,6 +96,7 @@ This repository contains the files and projects I created while learning JavaScr
   - Event Handlers
   - Event Bubbling and Capturing
   - addEventListener and removeEventListener
+  - Event Delegation
 
 ### Object-Oriented Programming (OOP)
 - Introduction to OOP
@@ -133,7 +132,9 @@ This repository contains the files and projects I created while learning JavaScr
 ## Acknowledgements
 
 A big thanks to the content creators for their comprehensive and insightful tutorials:
-- [Greatstack](https://youtu.be/WjxQRfZfZnw?feature=shared)
-- [HuxnWebDev](https://youtu.be/H3XIJYEPdus?feature=shared)
-- [Akshay Saini - Namaste JavaScript Season 1 and Season 2](https://www.youtube.com/playlist?list=PLlasXeu85E9eLVlWFs-nz5PKXJU4f7Fks)
-- [Dave Gray](https://www.youtube.com/channel/UCLpBd4gzfIBXm2BPpdHOWdQ)
+- [Greatstack - JavaScript DOM Full Course | Document Object Model JavaScript Complete Course](https://youtu.be/WjxQRfZfZnw?feature=shared)
+- [HuxnWebDev - From Zero to Full Stack: Master JavaScript and Create Dynamic Web Apps](https://youtu.be/H3XIJYEPdus?feature=shared)
+- [Akshay Saini - Core JS Fundamentals](https://youtube.com/playlist?list=PLlasXeu85E9eLVlWFs-nz5PKXJU4f7Fks&feature=shared)
+- [Akshay Saini - Namaste JavaScript Season 1](https://youtube.com/playlist?list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&feature=shared)
+- [Akshay Saini - Namaste JavaScript Season 2](https://youtube.com/playlist?list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&feature=shared)
+- [Dave Gray - Advance JS Concepts](https://youtube.com/playlist?list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd&feature=shared)
